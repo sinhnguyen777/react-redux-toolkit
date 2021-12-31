@@ -1,5 +1,13 @@
-#components-layout-demo-fixed-sider .logo {
+.logo {
+  width: 130px;
+  height: 42px;
+  margin: 16px;
+  min-height: min-content;
   background-image: url("../../../images/1200px-Redux_Logo.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-x: center;
 }
 .site-layout .site-layout-background {
   background: #fff;
