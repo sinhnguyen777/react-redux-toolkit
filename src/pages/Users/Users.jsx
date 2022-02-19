@@ -3,7 +3,7 @@ import { Popconfirm, Table, Button, Space, message, Image } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchAsyncUsers,  } from '../../redux/slice/userSlice';
+import { fetchAsyncUsers, deleteUserById } from '../../redux/actions/userAction';
 
 
 const Users = () => {
@@ -19,7 +19,16 @@ const Users = () => {
         setdataMap({ dataSource: users.data })
     }, [users.data])
 
+    const confirm = (id) => {
+        dispatch(deleteUserById(id))
+        message.success('Delete successflly');
+        const dataSource = [...dataMap.dataSource]
 
+        setdataMap({
+            dataSource: dataSource.filter((item) => item.id !== id)
+        })
+    }
+    
     const cancel = (e) => {
         console.log(e);
         message.error('Click on No');
@@ -61,6 +70,7 @@ const Users = () => {
                         <p>Invite {record.name}</p>
                         <Popconfirm
                             title="Are you sure to delete this task?"
+                            onConfirm={() => confirm(record.id)}
                             onCancel={cancel}
                             okText="Yes"
                             cancelText="No"
