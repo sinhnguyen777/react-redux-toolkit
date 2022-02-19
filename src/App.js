@@ -11,6 +11,7 @@ import {
 } from '@ant-design/icons';
 import Home from './pages/Home/Home';
 import Users from "./pages/Users/Users";
+import CreateUser from "./pages/Users/CreateUser";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -18,19 +19,13 @@ const { SubMenu } = Menu;
 function App() {
    const [collapsed, setcollapsed] = useState(false)
    const [theme, settheme] = useState('dark')
-   const [current, setcurrent] = useState('1')
 
    const changeTheme = (value) => {
       settheme(value ? 'dark' : 'light')
    }
 
-   const handleClick = e => {
-      console.log('click', e);
-      setcurrent(e.key)
-   }
-
    const onCollapse = (collapsed) => {
-      console.log(collapsed);
+      // console.log(collapsed);
       setcollapsed(collapsed)
    }
    return (
@@ -40,13 +35,11 @@ function App() {
             collapsed={collapsed}
             onCollapse={onCollapse}
             theme={theme}
-            onClick={handleClick}
-            selectedKeys={current}
          >
             <Link to='/'>
                <div className="logo" />
             </Link>
-            <Menu theme={theme} mode="inline">
+            <Menu theme={theme} mode="inline" defaultOpenKeys={['1']}>
                <Menu.Item key="1" icon={<PieChartOutlined />}>
                   statistic
                </Menu.Item>
@@ -61,7 +54,7 @@ function App() {
                      <Link to='/user/create'>Create user</Link>
                   </Menu.Item>
                   <Menu.Item key="5">
-                     <Link to='/user/edit/:id'>Edit profile</Link>
+                     <Link to='/user/edit/4'>Edit profile</Link>
                   </Menu.Item>
                </SubMenu>
                <SubMenu key="sub2" icon={<TeamOutlined />} title="Product">
@@ -90,7 +83,8 @@ function App() {
                <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
                   <Routes>
                      <Route path='/' element={<Home />} />
-                     <Route path='/user' element={<Users />} />
+                     <Route path='/user/list' element={<Users />} />
+                     <Route path='/user/create' element={<CreateUser />} />
                      {/* <Route path='/edit/:id' element={<Users />} /> */}
                   </Routes>
                </div>

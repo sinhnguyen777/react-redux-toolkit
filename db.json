@@ -1,0 +1,32 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "Nguyen van A",
+            "email": "nguyenvana@gmail.com",
+            "phone": 1111111111,
+            "avatar": "http://beeimg.com/images/h26180623163.jpg"
+        },
+        {
+            "id": 2,
+            "username": "Nguyen van B",
+            "email": "nguyenvanb@gmail.com",
+            "phone": 2222222222,
+            "avatar": "https://i.pinimg.com/564x/51/cd/3a/51cd3aea2b0852fd4f5e98ac51eb074b.jpg"
+        },
+        {
+            "id": 3,
+            "username": "Nguyen van C",
+            "email": "nguyenvanc@gmail.com",
+            "phone": 33333333333,
+            "avatar": "https://www.trumiwatch.vn/wp-content/uploads/2020/08/Apple-Watch-Series-3-GPS-I5-300x300.jpg"
+        },
+        {
+            "id": 4,
+            "username": "Nguyen van D",
+            "email": "nguyenvand@gmail.com",
+            "phone": 444444444444,
+            "avatar": "https://uqoojcos5nobj.vcdn.cloud/uploads/2020/10/thumb_iP12_5-300x300.jpg"
+        }
+    ]
+}
