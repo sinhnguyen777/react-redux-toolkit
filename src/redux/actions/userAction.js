@@ -3,12 +3,30 @@ import userApi from "../../apis/userApi"
 
 const userAction = {
     fetchAsyncUsers: createAsyncThunk('users/fetchAsyncUsers', async () => {
-        return await userApi.getAll()
+        try {
+            const res = await userApi.getAll()
+            return res.data
+        } catch (error) {
+            console.log(error.message);
+        }
+    }),
+    createAsyncUser: createAsyncThunk('users/createUser', async (data) => {
+        try {
+            const res = await userApi.create(data)
+            return res.data
+        } catch (error) {
+            console.log(error.message);
+        }
+    }),
+    deleteUserById: createAsyncThunk('users/deleteUserById', async (id) => {
+        try {
+            const res = await userApi.delete(id)
+            return res.data
+        } catch (error) {
+            console.log(error.message);
+        }
     }),
 
-    deleteUserById: createAsyncThunk('users/deleteUserById', async (id) => {
-        return await userApi.delete(id)
-    })
 }
 
-export const { fetchAsyncUsers, deleteUserById } = userAction;
+export const { fetchAsyncUsers, deleteUserById, createAsyncUser } = userAction;

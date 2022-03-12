@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { Popconfirm, Table, Button, Space, message, Image } from 'antd'
-import { DeleteOutlined } from '@ant-design/icons'
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Popconfirm, Table, Button, Space, message, Image, Divider } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 
 import { fetchAsyncUsers, deleteUserById } from '../../redux/actions/userAction';
+import CreateUser from './CreateUser';
 
 
 const Users = () => {
@@ -16,8 +17,8 @@ const Users = () => {
     }, [dispatch])
 
     useEffect(() => {
-        setdataMap({ dataSource: users.data })
-    }, [users.data])
+        setdataMap({ dataSource: users })
+    }, [users])
 
     const confirm = (id) => {
         dispatch(deleteUserById(id))
@@ -28,7 +29,7 @@ const Users = () => {
             dataSource: dataSource.filter((item) => item.id !== id)
         })
     }
-    
+
     const cancel = (e) => {
         console.log(e);
         message.error('Click on No');
@@ -89,8 +90,13 @@ const Users = () => {
     ];
 
     return (
-        <Table columns={columns} dataSource={dataSource} rowKey='id' />
+        <>
+            <CreateUser />
+            <Divider />
+            <Table columns={columns} dataSource={dataSource} rowKey='id' />
+        </>
     )
 }
 
 export default Users
+

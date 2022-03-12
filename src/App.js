@@ -35,6 +35,14 @@ function App() {
             collapsed={collapsed}
             onCollapse={onCollapse}
             theme={theme}
+            style={{
+               overflow: 'auto',
+               height: '100vh',
+               position: 'fixed',
+               left: 0,
+               top: 0,
+               bottom: 0,
+            }}
          >
             <Link to='/'>
                <div className="logo" />
@@ -66,7 +74,7 @@ function App() {
                </Menu.Item>
             </Menu>
          </Sider>
-         <Layout className="site-layout">
+         <Layout className="site-layout" style={{ marginLeft: 200 }}>
             <Header className="site-layout-background" style={{ padding: '0 16px' }} >
                <Switch
                   checked={theme === 'dark'}
