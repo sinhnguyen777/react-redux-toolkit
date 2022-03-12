@@ -36,7 +36,7 @@ const userSlice = createSlice({
             
             // remove data by ID
             .addCase(deleteUserById.fulfilled, (state, actions) => {
-                
+                delete state.users[actions.payload.id]
             })
     }
 
@@ -61,5 +61,5 @@ const userSlice = createSlice({
     // },
 })
 
-// export const { getAllUser, removeUserById } = userSlice.actions;
+export const { getAllUser, createUser, removeUserById } = userSlice.actions;
 export default userSlice.reducer;

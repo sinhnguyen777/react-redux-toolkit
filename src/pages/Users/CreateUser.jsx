@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Form, Input, Button, Upload } from 'antd';
 import { UserOutlined, MailOutlined, UploadOutlined, PhoneOutlined } from '@ant-design/icons';
 import { createAsyncUser } from '../../redux/actions/userAction';
