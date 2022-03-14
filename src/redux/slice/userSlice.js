@@ -29,11 +29,11 @@ const userSlice = createSlice({
 
             // add new data
             .addCase(createAsyncUser.fulfilled, (state, actions) => {
-                state.users.push(actions.payload)
+                state.users.unshift(actions.payload)
                 state.loading = false
                 state.error = null
             })
-            
+
             // remove data by ID
             .addCase(deleteUserById.fulfilled, (state, actions) => {
                 delete state.users[actions.payload.id]

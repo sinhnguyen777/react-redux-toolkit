@@ -18,6 +18,22 @@ const userAction = {
             console.log(error.message);
         }
     }),
+    fetchAsyncUsersById: createAsyncThunk('users/fetchAsyncUsersById', async (id) => {
+        try {
+            const res = await userApi.getById(id)
+            return res.data
+        } catch (error) {
+            console.log(error.message);
+        }
+    }),
+    updateUserById: createAsyncThunk('users/updateUserById', async (id) => {
+        try {
+            const res = await userApi.update(id)
+            return res.data
+        } catch (error) {
+            console.log(error.message);
+        }
+    }),
     deleteUserById: createAsyncThunk('users/deleteUserById', async (id) => {
         try {
             const res = await userApi.delete(id)
@@ -29,4 +45,4 @@ const userAction = {
 
 }
 
-export const { fetchAsyncUsers, deleteUserById, createAsyncUser } = userAction;
+export const { fetchAsyncUsers, deleteUserById, createAsyncUser, fetchAsyncUsersById, updateUserById } = userAction;

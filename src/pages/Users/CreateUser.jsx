@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Input, Button, Upload } from 'antd';
 import { UserOutlined, MailOutlined, UploadOutlined, PhoneOutlined } from '@ant-design/icons';
-import { createAsyncUser } from '../../redux/actions/userAction';
+import { createAsyncUser, fetchAsyncUsers } from '../../redux/actions/userAction';
 
 
 const CreateUser = () => {
@@ -18,6 +18,10 @@ const CreateUser = () => {
             phone: values.phone
         }
         dispatch(createAsyncUser(data))
+
+        form.resetFields()
+
+        dispatch(fetchAsyncUsers())
     };
 
 
@@ -102,7 +106,7 @@ const CreateUser = () => {
                             !!form.getFieldsError().filter(({ errors }) => errors.length).length
                         }
                     >
-                        Add User
+                        Submit
                     </Button>
                 )}
             </Form.Item>

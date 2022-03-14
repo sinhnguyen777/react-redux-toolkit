@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Popconfirm, Table, Button, Space, message, Image, Divider } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
-
-import { fetchAsyncUsers, deleteUserById } from '../../redux/actions/userAction';
+import { Button, Divider, Image, message, Popconfirm, Space, Table } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteUserById, fetchAsyncUsers } from '../../redux/actions/userAction';
+import ModalComponent from './Components/ModalComponent';
 import CreateUser from './CreateUser';
-
 
 const Users = () => {
     const [dataMap, setdataMap] = useState({})
@@ -43,7 +42,8 @@ const Users = () => {
             render: (text, record) => (
                 <Image
                     width={100}
-                    src={record.avatar}
+                    height={50}
+                    src={`http://127.0.0.1:8887/${record.avatar}`}
                 />
             ),
         },
@@ -68,7 +68,7 @@ const Users = () => {
             render: (text, record) => {
                 return (
                     <Space size="middle" >
-                        <p>Invite {record.name}</p>
+                        <ModalComponent />
                         <Popconfirm
                             title="Are you sure to delete this task?"
                             onConfirm={() => confirm(record.id)}
